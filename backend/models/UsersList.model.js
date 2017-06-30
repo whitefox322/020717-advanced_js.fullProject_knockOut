@@ -5,6 +5,7 @@ import DataSet from "./DataSet.model";
 export default class UsersList extends DataSet{
 	constructor(data) {
 		super(data, User);
+		this.initialize();
 	}
 
 	pagedSnapshots(curPage, limit) {

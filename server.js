@@ -15,8 +15,13 @@ const
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-useController(UsersController, USERS_PATH);
-useController(ArticlesController, ARTICLES_PATH);
+const users = readJsonSync(USERS_PATH);
+const usersController = new UsersController(users);
+usersController.bind(app);
+
+const articles = readJsonSync(ARTICLES_PATH);
+const articlesController = new ArticlesController(articles, usersController.dataSet);
+articlesController.bind(app);
 
 app.get("*", function (req, res) {
 	file.serve(req, res);

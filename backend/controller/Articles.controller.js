@@ -2,8 +2,8 @@ import ArticlesList from "../models/ArticlesList.model";
 import ControllerBase from "./Controller.base";
 
 export default class ArticlesController extends ControllerBase {
-	constructor(articles) {
-		super(new ArticlesList(articles));
+	constructor(articles, usersDataSet) {
+		super(new ArticlesList(articles, usersDataSet));
 	}
 
 	add(req, res) {
