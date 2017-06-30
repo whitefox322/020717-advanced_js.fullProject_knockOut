@@ -11,9 +11,13 @@ export default class DataSet {
 			throw new Error("Only array supported for initial data!");
 		}
 		this.__data = [];
+		this.__rawData = data;
 
 		this.DataItemCtor = dataClassCtor;
-		data.forEach(this.__prepend.bind(this));
+	}
+
+	initialize() {
+		this.__rawData.forEach(this.__prepend.bind(this));
 	}
 
 	get(id) {

@@ -5,12 +5,18 @@ import PagedSet from "./PagedSet.model";
 import uuid from "uuid";
 
 export default class ArticlesList extends DataSet{
-	constructor(data) {
+	constructor(data, usersDataSet) {
 		super(data, Article);
+		this.__usersDataSet = usersDataSet;
+		this.initialize();
 	}
 
 	get(id, authorID) {
-		return this.__data.find(u => u.id === id && u.authorID === authorID);
+		const article = this.__data.find(u => u.id === id && u.authorID === authorID);
+
+		this.__setAuthorFullName(article);
+
+		return article;
 	}
 
 	add(item) {
@@ -50,7 +56,8 @@ export default class ArticlesList extends DataSet{
 		const data = authorData
 			.slice(startIndex, startIndex + +limit);
 
-		return new PagedSet(data, curPage, authorData.length, limit);
+		return this.__setAuthorFullNameForPaged(
+			new PagedSet(data, curPage, authorData.length, limit));
 	}
 
 	unfilteredPaged(curPage, limit) {
@@ -58,6 +65,28 @@ export default class ArticlesList extends DataSet{
 		const data = this.__data
 			.slice(startIndex, startIndex + +limit);
 
-		return new PagedSet(data, curPage, this.__data.length, limit);
+		return this.__setAuthorFullNameForPaged(
+			new PagedSet(data, curPage, this.__data.length, limit));
+	}
+
+	__setAuthorFullName(article) {
+		if (article) {
+			const author = this.__usersDataSet.get(article.authorID);
+			article.authorFullName = author.fullName;
+		}
+
+		return article;
+	}
+
+	__setAuthorFullNameForPaged(paged) {
+		if (paged && paged.data && paged.data.length) {
+			paged.data.forEach(this.__setAuthorFullName.bind(this));
+		}
+
+		return paged;
+	}
+
+	__prepend(item) {
+		return this.__setAuthorFullName(super.__prepend(item));
 	}
 }
