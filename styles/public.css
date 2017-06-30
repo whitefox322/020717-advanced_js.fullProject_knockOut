@@ -1,0 +1,30 @@
+body {
+  background: url("../images/bg.jpg") no-repeat;
+  background-size: cover;
+  font-family: sans-serif;
+}
+.header {
+  font-family: Cookie;
+  font-size: 46px;
+  text-align: center;
+}
+.header__badge {
+  display: inline-block;
+  margin-top: 15px;
+}
+.main__marg {
+  margin: 20px 0;
+}
+.main__text {
+  font-family: Handlee;
+  font-size: 24px;
+  text-indent: 15px;
+  text-align: justify;
+}
+.main__text--small {
+  display: inline-block;
+  font-family: Handlee;
+  font-size: 16px;
+  color: #204d74;
+  margin-top: 10px;
+}

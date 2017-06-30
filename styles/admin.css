@@ -1,0 +1,80 @@
+.navigator {
+  max-height: 51px;
+}
+.navigator__text {
+  font-family: "Neucha", sans-serif !important;
+  font-size: 18px;
+}
+.navigator__text--eng {
+  font-family: "Dosis", sans-serif !important;
+}
+.navigator__img {
+  max-height: 44px;
+  margin-top: 2px;
+}
+.header {
+  display: inline-block;
+  font-family: "Neucha", sans-serif !important;
+  font-size: 40px;
+  margin-bottom: 40px;
+}
+.side__text {
+  display: inline-block;
+  font-family: "Neucha", sans-serif !important;
+  font-size: 18px;
+  margin: 0;
+}
+.side__text--bold {
+  display: inline-block;
+  font-family: "Neucha", sans-serif !important;
+  font-size: 20px;
+  margin: 0;
+  font-weight: 700;
+}
+.side__img {
+  margin: 0 !important;
+}
+.side__footer {
+  text-align: center !important;
+}
+.main__img {
+  max-width: 300px;
+}
+.main__tab {
+  margin-bottom: 10px;
+}
+.forHide {
+  display: none !important;
+}
+.blocklist {
+  display: inline-block;
+  font-family: "Neucha", sans-serif !important;
+  font-size: 16px;
+}
+.table__img {
+  max-width: 100px;
+  max-height: 100px;
+  margin: 15px;
+}
+.table__text {
+  margin: 15px 0;
+}
+.table__btn {
+  margin: 50px 0;
+}
+.editor {
+  font-family: "Neucha", sans-serif !important;
+  font-size: 20px;
+}
+.editor__block {
+  margin-bottom: 40px !important;
+}
+.editor__img {
+  max-width: 300px;
+  max-height: 300px;
+}
+.editor__field {
+  display: inline-block;
+  height: 40px !important;
+  font-size: 20px !important;
+}

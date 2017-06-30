@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/admin.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Dosis:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Neucha:300,400,700" rel="stylesheet">
+    <title>Admin articles</title>
+</head>
+<body>
+<div class="container">
+    <nav class="navbar navbar-inverse navigator">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand navigator__text--eng" href="#">
+                    MyBlog.com
+                </a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a class="navigator__text" href="#">
+                            Статті
+                        </a>
+                    </li>
+                    <li><a class="navigator__text" href="#">Анонси</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <img class="img-rounded navigator__img" src="../images/200x100.png" alt="Avatar">
+                    </li>
+                    <li>
+                        <p class="navbar-text navigator__text">
+                            Привіт,
+                            <a href="#" class="navbar-link navigator__text">
+                                User
+                            </a>
+                        </p>
+                    </li>
+                    <li><a class="navigator__text" href="#"><span class="glyphicon glyphicon-off"></span>
+                        Вийти
+                    </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="readBlock">
+        <header>
+            <h1 class="header">
+                Панель управління статтями
+            </h1>
+        </header>
+        <div class="panel panel-default blocklist">
+            <div class="panel-heading">
+                <p>
+                    <a href="#">
+                        Написати нову статтю
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </a>
+                </p>
+            </div>
+            <table class="table table-hover">
+                <tr class="row info">
+                    <td class="col-xs-2">
+                        <img src="../images/article.png" alt="Article" class="thumbnail center-block table__img">
+                    </td>
+                    <td class="col-xs-6">
+                        <div class="table__text">
+                            <h4>{{Title of the article}}</h4>
+                            <strong>Short info about article:</strong>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            Amet autem blanditiis delectus dolorem, dolores fuga fugiat hic
+                            itaque molestiae natus officia omnis provident quibusdam quisquam
+                            rerum sit sunt suscipit voluptate?
+                        </div>
+                    </td>
+                    <td class="col-xs-4">
+                        <div class="btn-group pull-right table__btn">
+                            <button type="button" class="btn btn-success">Переглянути</button>
+                            <button type="button" class="btn btn-warning">Редагувати</button>
+                            <button type="button" class="btn btn-danger">Видалити</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="row warning">
+                    <td class="col-xs-2">
+                        <img src="../images/article.png" alt="Article" class="thumbnail center-block table__img">
+                    </td>
+                    <td class="col-xs-6">
+                        <div class="table__text">
+                            <h4>{{Title of the article}}</h4>
+                            <strong>Short info about article:</strong>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            Amet autem blanditiis delectus dolorem, dolores fuga fugiat hic
+                            itaque molestiae natus officia omnis provident quibusdam quisquam
+                            rerum sit sunt suscipit voluptate?
+                        </div>
+                    </td>
+                    <td class="col-xs-4">
+                        <div class="btn-group pull-right table__btn">
+                            <button type="button" class="btn btn-success">Переглянути</button>
+                            <button type="button" class="btn btn-warning">Редагувати</button>
+                            <button type="button" class="btn btn-danger">Видалити</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="row success">
+                    <td class="col-xs-2">
+                        <img src="../images/article.png" alt="Article" class="thumbnail center-block table__img">
+                    </td>
+                    <td class="col-xs-6">
+                        <div class="table__text">
+                            <h4>{{Title of the article}}</h4>
+                            <strong>Short info about article:</strong>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            Amet autem blanditiis delectus dolorem, dolores fuga fugiat hic
+                            itaque molestiae natus officia omnis provident quibusdam quisquam
+                            rerum sit sunt suscipit voluptate?
+                        </div>
+                    </td>
+                    <td class="col-xs-4">
+                        <div class="btn-group pull-right table__btn">
+                            <button type="button" class="btn btn-success">Переглянути</button>
+                            <button type="button" class="btn btn-warning">Редагувати</button>
+                            <button type="button" class="btn btn-danger">Видалити</button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div class="panel-footer">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                        <li>
+                            <a href="#">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="#">
+                                1
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                2
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                3
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div id="editBlock">
+        <header>
+            <h1 class="header">
+                Панель редагування статті
+            </h1>
+        </header>
+        <form class="row editor">
+            <div class="col-xs-5">
+                <div class="row form-group">
+                    <div class="col-xs-2">
+                        <label for="image">Зображення</label>
+                    </div>
+                    <div class="col-xs-10">
+                        <a href="#" id="image">
+                            <img src="../images/article.png" alt="Article" class="thumbnail center-block editor__img">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-7">
+                <div class="row form-group editor__block">
+                    <div class="col-xs-4">
+                        <label for="title">Заголовок статті:</label>
+                    </div>
+                    <div class="col-xs-8">
+                        <input type="text" name="title" id="title" class="form-control editor__field">
+                    </div>
+                </div>
+                <div class="row form-group editor__block">
+                    <div class="col-xs-4">
+                        <label for="category">Рубрика:</label>
+                    </div>
+                    <div class="col-xs-8">
+                        <select name="category" id="category" class="form-control editor__field">
+                            <option value="0">Політика</option>
+                            <option value="1">Спорт</option>
+                            <option value="2">Розваги</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row form-group editor__block">
+                    <div class="col-xs-4">
+                        <label for="type">Тип статті:</label>
+                    </div>
+                    <div class="col-xs-8">
+                        <select name="type" id="type" class="form-control editor__field">
+                            <option value="0">Новина</option>
+                            <option value="1">Попередження</option>
+                            <option value="2">Огляд</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row form-group editor__block">
+                    <div class="col-xs-4">
+                        <label for="preview">Вигляд:</label>
+                    </div>
+                    <div class="col-xs-8">
+                        <select name="preview" id="preview" class="form-control editor__field">
+                            <option value="0">Звичайний</option>
+                            <option value="1">Важливий</option>
+                            <option value="2">Надважливий</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="row form-group">
+                    <div class="col-xs-3">
+                        <label for="shortInfo">Короткий опис статті:</label>
+                    </div>
+                    <div class="col-xs-9">
+                        <textarea name="shortInfo" id="shortInfo" class="form-control" rows="5"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="row form-group">
+                    <div class="col-xs-3">
+                        <label for="fullInfo">Повний зміст статті:</label>
+                    </div>
+                    <div class="col-xs-9">
+                        <textarea name="fullInfo" id="fullInfo" class="form-control" rows="10"></textarea>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+
+<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

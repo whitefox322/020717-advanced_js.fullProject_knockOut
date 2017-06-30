@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles/public.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Handlee" rel="stylesheet">
+    <title>Articles list</title>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                MyBlog.com
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a class="" href="#">
+                        Articles
+                    </a>
+                </li>
+                <li>
+                    <a class="" href="#">
+                        Authors
+                    </a>
+                </li>
+                <li>
+                    <a class="" href="#">
+                        Comments
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#">
+                        Registration
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        Login
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div id="articleList">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <a href="#" class="list-group-item">
+                    <span class="badge header__badge">Views: 13</span>
+                    <h4 class="list-group-item-heading header">
+                        {{Title of the article}}
+                    </h4>
+                </a>
+            </div>
+            <div class="row panel-body">
+                <div class="col-xs-12">
+                    <img src="images/article.png" alt="Article" class="thumbnail center-block">
+                </div>
+                <p class="col-xs-12 main__text">
+                    <strong>Short info about article:</strong>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Amet autem blanditiis delectus dolorem, dolores fuga fugiat hic
+                    itaque molestiae natus officia omnis provident quibusdam quisquam
+                    rerum sit sunt suscipit voluptate?
+                </p>
+            </div>
+            <div class="panel-footer clearfix">
+            <span class="main__text--small">
+               <strong>Author:</strong>
+                {{FullName}}
+            </span>
+                <button class="btn btn-info pull-right">Overwiev</button>
+            </div>
+        </div>
+    </div>
+    <div id="articleRead">
+        <div class="row">
+            <h2 class="col-xs-12 header">
+                {{Title of the article}}
+            </h2>
+            <div class="col-xs-12 main__marg">
+                <img src="images/article.png" alt="Article" class="thumbnail center-block">
+            </div>
+            <div class="col-xs-12 main__text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci cupiditate, eligendi officiis quibusdam
+                quisquam reiciendis repellat temporibus. Dicta dolore error necessitatibus, non quae quam quod velit.
+                Aperiam autem corporis cumque cupiditate debitis distinctio dolor dolorum ducimus eligendi excepturi
+                explicabo facilis fugit illo, incidunt ipsa ipsum labore laudantium libero maiores maxime molestias
+                necessitatibus nesciunt perspiciatis quaerat quis quod recusandae reiciendis sed sit soluta tempore, tenetur
+                totam vel velit veniam voluptatem voluptatibus? In inventore porro repellendus veritatis. Ad debitis
+                dignissimos dolore eos eum facere facilis fuga incidunt ipsam iusto libero nemo officia optio, perferendis
+                porro praesentium quibusdam quis quo rem repudiandae, rerum!
+            </div>
+            <div class="col-xs-6 main__marg">
+            <span class="main__text--small">
+                <strong>Author:</strong>
+                {{FullName}}
+            </span>
+            </div>
+            <div class="col-xs-6 main__marg">
+            <span class="main__text--small pull-right">
+                <strong>Views:</strong>
+                {{NumberOfViews}}
+            </span>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
