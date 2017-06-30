@@ -1,4 +1,4 @@
-class PagedSet {
+export default class PagedSet {
 	constructor(data, currPage, totalItems, limit) {
 		this.data = data;
 		this.page = +currPage;
@@ -7,4 +7,3 @@ class PagedSet {
 		this.totalPages = Math.ceil(this.totalItems / this.limit);
 	}
 }
-module.exports = PagedSet;

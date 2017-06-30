@@ -1,4 +1,4 @@
-class UserSnapshot {
+export default class UserSnapshot {
 	constructor(u) {
 		this.id = u.id;
 		this.photo = u.photo;
@@ -6,5 +6,3 @@ class UserSnapshot {
 		this.country = u.country;
 	}
 }
-
-module.exports = UserSnapshot;

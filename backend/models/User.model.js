@@ -1,6 +1,6 @@
-const uuid = require("uuid");
+import uuid from "uuid";
 
-class User {
+export default class User {
 	constructor(json) {
 		this.id = (json.id || "").toLowerCase();
 		this.fullName = json.fullName;
@@ -14,5 +14,3 @@ class User {
 		this.photo = json.photo || "http://loremflickr.com/150/150/boy?random=" + uuid.v4()
 	}
 }
-
-module.exports = User;

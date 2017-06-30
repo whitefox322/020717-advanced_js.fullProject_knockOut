@@ -1,8 +1,6 @@
-const fs = require("fs");
+import fs from "fs";
 
-function readJsonSync(path) {
+export default function readJsonSync(path) {
 	const jsonStr = fs.readFileSync(path, "utf8");
 	return JSON.parse(jsonStr);
 }
-
-exports.readJsonSync = readJsonSync;

@@ -1,7 +1,7 @@
-const PagedSet = require("./PagedSet.model");
-const uuid = require("uuid");
+import PagedSet from "./PagedSet.model";
+import uuid from "uuid";
 
-class DataSet {
+export default class DataSet {
 	constructor(data, dataClassCtor) {
 		if (typeof data === "string") {
 			data = JSON.parse(data);
@@ -66,7 +66,3 @@ class DataSet {
 		return u instanceof this.DataItemCtor ? u : new this.DataItemCtor(u);
 	}
 }
-
-
-
-module.exports = DataSet;

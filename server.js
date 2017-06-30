@@ -3,7 +3,7 @@ import nodeStatic from "node-static";
 import bodyParser from "body-parser";
 import UsersController from "./backend/controller/Users.controller";
 import ArticlesController from "./backend/controller/Articles.controller";
-import FsDataProvider from "./backend/database/FsDataProvider";
+import readJsonSync from "./backend/database/FsDataProvider";
 
 const
 	file = new nodeStatic.Server("."),
@@ -26,7 +26,7 @@ app.listen(LISTEN_PORT);
 console.log("Listen port " + LISTEN_PORT);
 
 function useController(Controller, dataPath) {
-	const data = FsDataProvider.readJsonSync(dataPath);
+	const data = readJsonSync(dataPath);
 	const controller = new Controller(data);
 	controller.bind(app);
 }

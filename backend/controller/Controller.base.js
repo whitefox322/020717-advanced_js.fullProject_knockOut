@@ -12,26 +12,8 @@ export default class ControllerBase {
 				});
 		}
 
-		const errorMessage = this.beforeAdd(item);
-		if (errorMessage) {
-			return res.status(400)
-				.send({
-					message: errorMessage
-				});
-		}
-
 		item = this.dataSet.add(item);
 		return res.send(item);
-	}
-
-	beforeAdd() {}
-	beforeUpdate() {}
-	beforeGet() {}
-	beforeDelete() {}
-	beforePaged() {}
-
-	filterPaged(paged) {
-		return paged;
 	}
 
 	update(req, res) {
@@ -47,13 +29,6 @@ export default class ControllerBase {
 				message: e.message
 			};
 		}
-		const errorMessage = this.beforeUpdate(response);
-		if (errorMessage) {
-			return res.status(400)
-				.send({
-					message: errorMessage
-				});
-		}
 
 		return res.status(status)
 			.send(response);
@@ -62,15 +37,6 @@ export default class ControllerBase {
 	get(req, res) {
 		const id = req.params.id,
 			data = this.dataSet.get(id);
-
-
-		const errorMessage = this.beforeGet(data, req);
-		if (errorMessage) {
-			return res.status(400)
-				.send({
-					message: errorMessage
-				});
-		}
 
 		res.status(data ? 200 : 404)
 			.send(data);
@@ -82,29 +48,12 @@ export default class ControllerBase {
 			return res.status(404).end();
 		}
 
-		const errorMessage = this.beforePaged(paged, req);
-		if (errorMessage) {
-			return res.status(400)
-				.send({
-					message: errorMessage
-				});
-		}
-
-		paged = this.filterPaged(paged);
-
 		return res.send(paged);
 	}
 
 	del(req, res) {
 		const id = req.params.id;
 		const u = this.dataSet.get(id);
-		const errorMessage = this.beforeDelete(u, req);
-		if (errorMessage) {
-			return res.status(400)
-				.send({
-					message: errorMessage
-				});
-		}
 
 		if (!u) {
 			return res.status(400)

@@ -1,8 +1,8 @@
-const User = require("./User.model");
-const UserSnapshot = require("./UserSnapshot.model");
-const DataSet = require("./DataSet.model");
+import User from "./User.model";
+import UserSnapshot from "./UserSnapshot.model";
+import DataSet from "./DataSet.model";
 
-class UsersList extends DataSet{
+export default class UsersList extends DataSet{
 	constructor(data) {
 		super(data, User);
 	}
@@ -13,5 +13,3 @@ class UsersList extends DataSet{
 		return page;
 	}
 }
-
-module.exports = UsersList;
