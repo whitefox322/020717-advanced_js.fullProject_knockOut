@@ -58,37 +58,64 @@
 </nav>
 <div class="container">
     <div id="articleList">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <a href="#" class="list-group-item">
-                    <span class="badge header__badge">Views: 13</span>
-                    <h4 class="list-group-item-heading header">
-                        {{Title of the article}}
-                    </h4>
-                </a>
-            </div>
-            <div class="row panel-body">
-                <div class="col-xs-12">
-                    <img src="images/article.png" alt="Article" class="thumbnail center-block">
+        <nav>
+            <ul class="pager">
+                <li data-bind="css: { disabled: page() === 1 }">
+                    <a href="#" data-bind="click: goToPrevPage">
+                        Previous
+                    </a>
+                </li>
+                <li data-bind="css: { disabled: page() === totalPages() }">
+                    <a href="#" data-bind="click: goToNextPage">
+                        Next
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div data-bind="foreach: info">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <a href="#" class="list-group-item">
+                        <span class="badge header__badge">Views: 13</span>
+                        <h4 class="list-group-item-heading header" data-bind="text: title"></h4>
+                    </a>
                 </div>
-                <p class="col-xs-12 main__text">
-                    <strong>Short info about article:</strong>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Amet autem blanditiis delectus dolorem, dolores fuga fugiat hic
-                    itaque molestiae natus officia omnis provident quibusdam quisquam
-                    rerum sit sunt suscipit voluptate?
-                </p>
-            </div>
-            <div class="panel-footer clearfix">
+                <div class="row panel-body">
+                    <div class="col-xs-12">
+                        <img class="thumbnail center-block" data-bind="attr: { src: thumbnail, alt: title }">
+                    </div>
+                    <p class="col-xs-12 main__text" data-bind="text: shortContent"></p>
+                </div>
+                <div class="panel-footer clearfix">
             <span class="main__text--small">
                <strong>Author:</strong>
                 {{FullName}}
             </span>
-                <button class="btn btn-info pull-right">Overwiev</button>
+                    <button class="btn btn-info pull-right">Overwiev</button>
+                </div>
             </div>
         </div>
+        <nav class="centerPosition">
+            <ul class="pagination">
+                <li data-bind="css: { disabled: page() === 1 }">
+                    <a href="#" data-bind="click: goToPrevPage">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                </li>
+                <!-- ko foreach: pagesNumber -->
+                <li data-bind="css: { active: $parent.page() === $data }">
+                    <a href="#" data-bind="text: $data, click: $parent.goToPage"></a>
+                </li>
+                <!-- /ko -->
+                <li data-bind="css: { disabled: page() === totalPages() }">
+                    <a href="#" data-bind="click: goToNextPage">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </div>
-    <div id="articleRead">
+    <div id="articleRead" style="display: none">
         <div class="row">
             <h2 class="col-xs-12 header">
                 {{Title of the article}}
@@ -127,5 +154,7 @@
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
 
 <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="node_modules/knockout/build/output/knockout-latest.debug.js"></script>
+<script src="js/public.js"></script>
 </body>
 </html>
