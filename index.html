@@ -18,38 +18,38 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="http://localhost:8081/">
                 MyBlog.com
             </a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active">
-                    <a class="" href="#">
+                <li class="active" data-bind="click: refresh">
+                    <a class="" href="http://localhost:8081/">
                         Articles
                     </a>
                 </li>
                 <li>
-                    <a class="" href="#">
+                    <a class="" href="http://localhost:8081/admin/users.html">
                         Authors
                     </a>
                 </li>
-                <li>
+                <li class="disabled">
                     <a class="" href="#">
                         Comments
                     </a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li>
+                <li class="disabled">
                     <a href="#">
                         Registration
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        Login
+                    <a href="http://localhost:8081/admin/articles.html">
+                        My account
                     </a>
                 </li>
             </ul>
@@ -57,17 +57,19 @@
     </div>
 </nav>
 <div class="container">
-    <div id="articleList">
+    <div id="articleList" data-bind="if: !article()">
         <nav>
             <ul class="pager">
                 <li data-bind="css: { disabled: page() === 1 }">
                     <a href="#" data-bind="click: goToPrevPage">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
                         Previous
                     </a>
                 </li>
                 <li data-bind="css: { disabled: page() === totalPages() }">
                     <a href="#" data-bind="click: goToNextPage">
                         Next
+                        <span class="glyphicon glyphicon-chevron-right"></span>
                     </a>
                 </li>
             </ul>
@@ -76,7 +78,6 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <a href="#" class="list-group-item">
-                        <span class="badge header__badge">Views: 13</span>
                         <h4 class="list-group-item-heading header" data-bind="text: title"></h4>
                     </a>
                 </div>
@@ -87,11 +88,14 @@
                     <p class="col-xs-12 main__text" data-bind="text: shortContent"></p>
                 </div>
                 <div class="panel-footer clearfix">
-            <span class="main__text--small">
-               <strong>Author:</strong>
-                {{FullName}}
-            </span>
-                    <button class="btn btn-info pull-right">Overwiev</button>
+                    <span class="main__text--small">
+                        <strong>Author:</strong>
+                        <span data-bind="text: authorFullName"></span>
+                    </span>
+                    <button class="btn btn-success pull-right" data-bind="click: $parent.readArticle">
+                        <span class="glyphicon glyphicon-eye-open"></span>
+                        Overview
+                    </button>
                 </div>
             </div>
         </div>
@@ -115,36 +119,24 @@
             </ul>
         </nav>
     </div>
-    <div id="articleRead" style="display: none">
+    <div id="articleRead" data-bind="with: article">
         <div class="row">
-            <h2 class="col-xs-12 header">
-                {{Title of the article}}
-            </h2>
+            <h2 class="col-xs-12 header" data-bind="text: title"></h2>
             <div class="col-xs-12 main__marg">
-                <img src="images/article.png" alt="Article" class="thumbnail center-block">
+                <img class="thumbnail center-block" data-bind="attr: { src: thumbnail, alt: title }">
             </div>
-            <div class="col-xs-12 main__text">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci cupiditate, eligendi officiis quibusdam
-                quisquam reiciendis repellat temporibus. Dicta dolore error necessitatibus, non quae quam quod velit.
-                Aperiam autem corporis cumque cupiditate debitis distinctio dolor dolorum ducimus eligendi excepturi
-                explicabo facilis fugit illo, incidunt ipsa ipsum labore laudantium libero maiores maxime molestias
-                necessitatibus nesciunt perspiciatis quaerat quis quod recusandae reiciendis sed sit soluta tempore, tenetur
-                totam vel velit veniam voluptatem voluptatibus? In inventore porro repellendus veritatis. Ad debitis
-                dignissimos dolore eos eum facere facilis fuga incidunt ipsam iusto libero nemo officia optio, perferendis
-                porro praesentium quibusdam quis quo rem repudiandae, rerum!
-            </div>
+            <div class="col-xs-12 main__text" data-bind="text: content"></div>
             <div class="col-xs-6 main__marg">
             <span class="main__text--small">
                 <strong>Author:</strong>
-                {{FullName}}
+                <span data-bind="text: authorFullName"></span>
             </span>
             </div>
             <div class="col-xs-6 main__marg">
-            <span class="main__text--small pull-right">
-                <strong>Views:</strong>
-                {{NumberOfViews}}
-            </span>
-
+                <button type="button" class="btn btn-danger pull-right" data-bind="click: $parent.refresh">
+                    <span class="glyphicon glyphicon-share-alt"></span>
+                    Back
+                </button>
             </div>
         </div>
     </div>

@@ -19,19 +19,23 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand navigator__text--eng" href="#">
+                <a class="navbar-brand navigator__text--eng" href="http://localhost:8081/">
                     MyBlog.com
                 </a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a class="navigator__text" href="#">
-                            Статті
+                    <li>
+                        <a class="navigator__text" href="http://localhost:8081/admin/users.html">
+                            Автори
                         </a>
                     </li>
-                    <li><a class="navigator__text" href="#">Анонси</a></li>
+                    <li class="active">
+                        <a class="navigator__text" href="http://localhost:8081/admin/articles.html">
+                            Статті авторів
+                        </a>
+                    </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
@@ -40,20 +44,22 @@
                     <li>
                         <p class="navbar-text navigator__text">
                             Привіт,
-                            <a href="#" class="navbar-link navigator__text">
+                            <a href="#" class="navbar-link navigator__text" data-bind="text: authorFullName()">
                                 User
                             </a>
                         </p>
                     </li>
-                    <li><a class="navigator__text" href="#"><span class="glyphicon glyphicon-off"></span>
-                        Вийти
-                    </a>
+                    <li>
+                        <a class="navigator__text" href="http://localhost:8081/">
+                            <span class="glyphicon glyphicon-off"></span>
+                            Вийти
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div id="readBlock">
+    <div id="readBlock" data-bind="if: !selectedArticle()">
         <header>
             <h1 class="header">
                 Панель управління статтями
@@ -62,105 +68,52 @@
         <div class="panel panel-default blocklist">
             <div class="panel-heading">
                 <p>
-                    <a href="#">
+                    <a href="#" data-bind="click: addNewArticle">
                         Написати нову статтю
-                        <span class="glyphicon glyphicon-plus"></span>
+                        <span class="glyphicon glyphicon-pushpin"></span>
                     </a>
                 </p>
             </div>
-            <table class="table table-hover">
+            <table class="table table-hover" data-bind="foreach: info">
                 <tr class="row info">
                     <td class="col-xs-2">
-                        <img src="../images/article.png" alt="Article" class="thumbnail center-block table__img">
+                        <img class="thumbnail center-block table__img" data-bind="attr: { src: thumbnail, alt: title }">
                     </td>
                     <td class="col-xs-6">
                         <div class="table__text">
-                            <h4>{{Title of the article}}</h4>
-                            <strong>Short info about article:</strong>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                            Amet autem blanditiis delectus dolorem, dolores fuga fugiat hic
-                            itaque molestiae natus officia omnis provident quibusdam quisquam
-                            rerum sit sunt suscipit voluptate?
+                            <h4 class="table__text--strong" data-bind="text: title"></h4>
+                            <span data-bind="text: shortContent"></span>
                         </div>
                     </td>
                     <td class="col-xs-4">
                         <div class="btn-group pull-right table__btn">
-                            <button type="button" class="btn btn-success">Переглянути</button>
-                            <button type="button" class="btn btn-warning">Редагувати</button>
-                            <button type="button" class="btn btn-danger">Видалити</button>
-                        </div>
-                    </td>
-                </tr>
-                <tr class="row warning">
-                    <td class="col-xs-2">
-                        <img src="../images/article.png" alt="Article" class="thumbnail center-block table__img">
-                    </td>
-                    <td class="col-xs-6">
-                        <div class="table__text">
-                            <h4>{{Title of the article}}</h4>
-                            <strong>Short info about article:</strong>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                            Amet autem blanditiis delectus dolorem, dolores fuga fugiat hic
-                            itaque molestiae natus officia omnis provident quibusdam quisquam
-                            rerum sit sunt suscipit voluptate?
-                        </div>
-                    </td>
-                    <td class="col-xs-4">
-                        <div class="btn-group pull-right table__btn">
-                            <button type="button" class="btn btn-success">Переглянути</button>
-                            <button type="button" class="btn btn-warning">Редагувати</button>
-                            <button type="button" class="btn btn-danger">Видалити</button>
-                        </div>
-                    </td>
-                </tr>
-                <tr class="row success">
-                    <td class="col-xs-2">
-                        <img src="../images/article.png" alt="Article" class="thumbnail center-block table__img">
-                    </td>
-                    <td class="col-xs-6">
-                        <div class="table__text">
-                            <h4>{{Title of the article}}</h4>
-                            <strong>Short info about article:</strong>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                            Amet autem blanditiis delectus dolorem, dolores fuga fugiat hic
-                            itaque molestiae natus officia omnis provident quibusdam quisquam
-                            rerum sit sunt suscipit voluptate?
-                        </div>
-                    </td>
-                    <td class="col-xs-4">
-                        <div class="btn-group pull-right table__btn">
-                            <button type="button" class="btn btn-success">Переглянути</button>
-                            <button type="button" class="btn btn-warning">Редагувати</button>
-                            <button type="button" class="btn btn-danger">Видалити</button>
+                            <button type="button" class="btn btn-warning" data-bind="click: $parent.editArticle">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                Редагувати
+                            </button>
+                            <button type="button" class="btn btn-danger" data-bind="click: $parent.removeArticle">
+                                <span class="glyphicon glyphicon-erase"></span>
+                                Видалити
+                            </button>
                         </div>
                     </td>
                 </tr>
             </table>
             <div class="panel-footer">
-                <nav aria-label="Page navigation">
+                <nav class="centerPosition">
                     <ul class="pagination">
-                        <li>
-                            <a href="#">
+                        <li data-bind="css: { disabled: page() === 1 }">
+                            <a href="#" data-bind="click: goToPrevPage">
                                 <span class="glyphicon glyphicon-chevron-left"></span>
                             </a>
                         </li>
-                        <li class="active">
-                            <a href="#">
-                                1
-                            </a>
+                        <!-- ko foreach: pagesNumber -->
+                        <li data-bind="css: { active: $parent.page() === $data }">
+                            <a href="#" data-bind="text: $data, click: $parent.goToPage"></a>
                         </li>
-                        <li>
-                            <a href="#">
-                                2
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                3
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
+                        <!-- /ko -->
+                        <li data-bind="css: { disabled: page() === totalPages() }">
+                            <a href="#" data-bind="click: goToNextPage">
                                 <span class="glyphicon glyphicon-chevron-right"></span>
                             </a>
                         </li>
@@ -169,22 +122,24 @@
             </div>
         </div>
     </div>
-    <div id="editBlock">
+    <div id="editBlock" data-bind="with: selectedArticle">
         <header>
             <h1 class="header">
                 Панель редагування статті
             </h1>
         </header>
-        <form class="row editor">
+        <form class="row editor" data-bind="submit: $parent.saveArticle">
             <div class="col-xs-5">
                 <div class="row form-group">
                     <div class="col-xs-2">
                         <label for="image">Зображення</label>
                     </div>
                     <div class="col-xs-10">
-                        <a href="#" id="image">
-                            <img src="../images/article.png" alt="Article" class="thumbnail center-block editor__img">
+                        <a href="#" id="image" data-bind="click: $parent.openFileDialog">
+                            <img class="thumbnail center-block editor__img" data-bind="attr: { src: thumbnail, alt: title }">
                         </a>
+                        <input type="file" class="forHide" data-bind="event: { change: $parent.uploadImage }"
+                               id="openFileDialogElement">
                     </div>
                 </div>
             </div>
@@ -194,7 +149,7 @@
                         <label for="title">Заголовок статті:</label>
                     </div>
                     <div class="col-xs-8">
-                        <input type="text" name="title" id="title" class="form-control editor__field">
+                        <input type="text" name="title" id="title" class="form-control editor__field"  data-bind="value: title">
                     </div>
                 </div>
                 <div class="row form-group editor__block">
@@ -223,14 +178,10 @@
                 </div>
                 <div class="row form-group editor__block">
                     <div class="col-xs-4">
-                        <label for="preview">Вигляд:</label>
+                        <label for="author">Автор:</label>
                     </div>
                     <div class="col-xs-8">
-                        <select name="preview" id="preview" class="form-control editor__field">
-                            <option value="0">Звичайний</option>
-                            <option value="1">Важливий</option>
-                            <option value="2">Надважливий</option>
-                        </select>
+                        <input type="text" name="author" id="author" class="form-control editor__field"  data-bind="value: authorFullName" disabled>
                     </div>
                 </div>
             </div>
@@ -240,7 +191,7 @@
                         <label for="shortInfo">Короткий опис статті:</label>
                     </div>
                     <div class="col-xs-9">
-                        <textarea name="shortInfo" id="shortInfo" class="form-control" rows="5"></textarea>
+                        <textarea name="shortInfo" id="shortInfo" class="form-control editor__field--smaller" rows="5" data-bind="value: shortContent"></textarea>
                     </div>
                 </div>
             </div>
@@ -250,7 +201,21 @@
                         <label for="fullInfo">Повний зміст статті:</label>
                     </div>
                     <div class="col-xs-9">
-                        <textarea name="fullInfo" id="fullInfo" class="form-control" rows="10"></textarea>
+                        <textarea name="fullInfo" id="fullInfo" class="form-control editor__field--smaller" rows="10" data-bind="value: content"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <div class="btn-group pull-right editor__block">
+                        <button class="btn btn-primary">
+                            <span class="glyphicon glyphicon-floppy-save"></span>
+                            Опублікувати
+                        </button>
+                        <button type="button" class="btn btn-default" id="cancel" data-bind="click: $parent.cancelAction">
+                            <span class="glyphicon glyphicon-ban-circle"></span>
+                            Скасувати
+                        </button>
                     </div>
                 </div>
             </div>
@@ -262,5 +227,8 @@
 <script src="../node_modules/jquery/dist/jquery.min.js"></script>
 
 <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../node_modules/knockout/build/output/knockout-latest.debug.js"></script>
+<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+<script src="../js/admin_articles.js"></script>
 </body>
 </html>

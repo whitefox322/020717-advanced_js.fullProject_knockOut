@@ -2,6 +2,7 @@ var viewModel = {
     info: ko.observableArray([]),
     page: ko.observable(1),
     totalPages: ko.observable(0),
+    article: ko.observable(null),
     pagesNumber: ko.pureComputed(function () {
         var pages = [];
 
@@ -35,6 +36,15 @@ var viewModel = {
         }
 
         viewModel.goToPage(viewModel.page() + 1);
+    },
+    readArticle: function (article) {
+        $.getJSON("/api/users/" + article.authorID + "/articles/" + article.id)
+            .done(function (object) {
+               viewModel.article(object);
+            });
+    },
+    refresh: function () {
+        viewModel.article(null);
     }
 };
 
